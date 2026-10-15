@@ -22,6 +22,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Pages\Auth\Login;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -31,14 +32,12 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('LSP')
-            ->login()
+            ->login(Login::class)
             ->plugins([FilamentShieldPlugin::make(),
             ])
             ->registration(Register::class)
-            ->brandLogo(asset('images/logo-lsp-removebg-preview.png'))
+            ->brandLogo(asset('images/logo-lsp2-removebg-preview.png'))
             ->brandLogoHeight('4.5rem')
-            // ->defaultThemeMode(ThemeMode::Light)
-            // ->darkMode(false)
             ->colors([
                 'primary' => Color::Amber,
             ])

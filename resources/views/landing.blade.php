@@ -12,7 +12,7 @@
 
     <style>
         body {
-            background-color: #cfcccc;
+            background-color: #1d1d1d;
         }
 
         .btn-amber {
@@ -28,7 +28,7 @@
         }
 
         .logo-glow {
-            filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.35));
+            filter: drop-shadow(0 0 25px rgba(248, 160, 9, 0.788));
         }
 
         .text-navy {
@@ -39,12 +39,12 @@
 
 <body class="text-light min-vh-100 d-flex flex-column justify-content-between p-3 p-md-4">
 
-    <!-- Header / Navbar Minimalis -->
+    <!-- Header / Navbar -->
     <header class="container-fluid max-w-6xl py-2">
         <div class="d-flex justify-content-between items-center align-items-center">
             <div class="d-flex align-items-center gap-2">
-                <img src="{{ asset('images/logo-lsp-removebg-preview.png') }}" alt="Logo LSP" style="height: 40px;">
-                <span class="fw-bold fs-5 tracking-wide text-navy">LSP</span>
+                <img src="{{ asset('images/logo-lsp2-removebg-preview.png') }}" alt="Logo LSP" style="height: 60px;">
+                {{-- <span class="fw-bold fs-5 tracking-wide text-navy">LSP</span> --}}
             </div>
             <div>
                 <a href="/LSP/login" class="btn btn-secondary fw-semibold text-secondary-subtle fs-7">
@@ -57,11 +57,11 @@
     <!-- Hero / Main Section -->
     <main class="container text-center my-auto py-5" style="max-width: 720px;">
         <div class="mb-4">
-            <img src="{{ asset('images/logo-lsp-removebg-preview.png') }}" alt="Logo LSP" class="img-fluid logo-glow"
+            <img src="{{ asset('images/logo-lsp2-removebg-preview.png') }}" alt="Logo LSP" class="img-fluid logo-glow"
                 style="max-height: 180px;">
         </div>
 
-        <h1 class="display-5 fw-bold text-black mb-3">
+        <h1 class="display-5 fw-bold text-white mb-3">
             Sistem Sertifikasi Profesi
         </h1>
         <p class="text-secondary fs-5 mb-4 leading-relaxed">

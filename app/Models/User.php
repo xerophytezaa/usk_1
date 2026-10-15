@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Filament\Tables\Columns\Layout\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +15,7 @@ class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, HasRoles;
-    
+
 
     /**
      * The attributes that are mass assignable.
@@ -53,5 +54,24 @@ class User extends Authenticatable
     public function peserta(): HasOne
     {
         return $this->hasOne(Peserta::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // 1. Admin & Super Admin selalu BISA login
+        if ($this->hasRole(['super_admin', 'admin'])) {
+            return true;
+        }
+
+        // 2. Peserta BISA login HANYA jika datanya sudah diverifikasi (is_active = true)
+        if ($this->hasRole('peserta')) {
+            // Ambil data peserta terkait
+            $peserta = $this->peserta;
+
+            // Jika record peserta ada dan is_active bernilai true/1
+            return $peserta && (bool) $peserta->is_active;
+        }
+
+        return false;
     }
 }

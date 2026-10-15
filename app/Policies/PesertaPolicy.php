@@ -18,13 +18,17 @@ class PesertaPolicy
         /** @var User $user */
         $user = $authUser;
 
+        // if ($ability === 'create') {
+        //     return null;
+        // }
+
         if ($user->hasRole(['super_admin', 'admin'])) {
             return true;
         }
 
         return null;
     }
-    
+
     public function viewAny(AuthUser $authUser): bool
     {
         return true;
@@ -37,7 +41,8 @@ class PesertaPolicy
 
     public function create(AuthUser $authUser): bool
     {
-        return $authUser->can('Create:Peserta');
+        return false;
+        // return $authUser->can('Create:Peserta');
     }
 
     public function update(AuthUser $authUser, Peserta $peserta): bool
